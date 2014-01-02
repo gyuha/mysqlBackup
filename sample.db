@@ -1,0 +1,16 @@
+#!/bin/bash
+#########################################
+# 백업 정보
+#########################################
+DB_NAME="sample"
+
+HOST=localhost
+USERNAME="root"
+PASSWORD="password"
+
+# 특정 데이터베이스 백업
+DATABASE="mysql test"
+# --all-databases일 경우 전체 DB 백업
+#DATABASE="--all-databases"
+
+BACKUP_DIR=`pwd`"/sample"
