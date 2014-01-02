@@ -3,9 +3,10 @@ mysqlBackup
 
 mysql backup shell script
 
-== 설정
+# 설정
 
 설정값 입력
+
 	DB_NAME="sample"
 
 	HOST=localhost
@@ -21,8 +22,8 @@ mysql backup shell script
 
 예) sample.db
 
-== 사용방법
-./mysqlBackup.sh [설정 파일]
+# 사용방법
+	./mysqlBackup.sh [설정 파일]
 
-
+예) ./mysqlBackup.sh sample.db
 
