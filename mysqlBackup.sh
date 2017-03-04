@@ -54,12 +54,20 @@ FILEPREFIX="$PREFIX-$DATE"
 BACKUP_LOG="$BACKUP_DIR/backup.log"
 RESTORE=$2
 
+# 예외 폴더 지정
+IGNORED_TABLES_STRING=''
+for TABLE in "${EXCLUDED_TABLES[@]}"
+do :
+	IGNORED_TABLES_STRING+=" --ignore-table=${DATABASE}.${TABLE}"
+done
+
+
 #########################################
 # backup
 #########################################
 # /usr/local/mysql/bin/mysqldump 절대 경로를 모두 써주는 것이 좋다.
 start_time=`date +%s`
-mysqldump -h$HOST -u$USERNAME -p$PASSWORD -R --database $DATABASE > $BACKUP_DIR/$FILEPREFIX.sql
+mysqldump -h$HOST -u$USERNAME -p$PASSWORD -R --database $DATABASE $IGNORED_TABLES_STRING > $BACKUP_DIR/$FILEPREFIX.sql
 cd $BACKUP_DIR
 if [  ${#RESTORE} -ne 0 ]
 then
@@ -95,4 +103,3 @@ rm -rf `ls $PREFIX*.tar.gz|head -$i`;
 echo "삭제백업 : $i 개" 			>> "$BACKUP_LOG"
 echo "수행시간 : $elapsed_time""sec" 	>> "$BACKUP_LOG"
 echo "################################################################" >> "$BACKUP_LOG"
-

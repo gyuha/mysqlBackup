@@ -14,3 +14,8 @@ DATABASE="mysql test"
 #DATABASE="--all-databases"
 
 BACKUP_DIR=`pwd`"/sample"
+
+EXCLUDED_TABLES=(
+user
+logs
+)
