@@ -67,7 +67,7 @@ done
 #########################################
 # /usr/local/mysql/bin/mysqldump 절대 경로를 모두 써주는 것이 좋다.
 start_time=`date +%s`
-mysqldump -h$HOST -u$USERNAME -p$PASSWORD -R --databases $DATABASE $IGNORED_TABLES_STRING > $BACKUP_DIR/$FILEPREFIX.sql
+mysqldump -h$HOST -u$USERNAME -p$PASSWORD --column-statistics=0 -R --databases $DATABASE $IGNORED_TABLES_STRING > $BACKUP_DIR/$FILEPREFIX.sql
 cd $BACKUP_DIR
 if [  ${#RESTORE} -ne 0 ]
 then
